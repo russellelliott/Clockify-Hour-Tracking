@@ -17,10 +17,10 @@ def _format_history_date(value: str) -> str:
 
 
 def _coerce_selected_date(value) -> date:
-    if isinstance(value, date):
-        return value
     if isinstance(value, datetime):
         return value.date()
+    if isinstance(value, date):
+        return value
     if isinstance(value, str):
         return datetime.strptime(value.strip(), "%Y-%m-%d").date()
     raise ValueError("Unsupported date value")
